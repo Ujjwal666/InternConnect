@@ -1,0 +1,33 @@
+body{
+	background-color: #ADEFD1FF;
+	color: black !important;
+}
+.login{
+	display: flex;
+	margin: auto;
+	width:  60%;
+	padding: 10px;
+	margin-top: 15%;
+	justify-content: space-between;
+	background-color: white;
+
+}
+.image_des img{
+	height: 400px;
+}
+.desc_form{
+	margin-left: 30px;
+	text-align: center;
+}
+.desc_form h2{
+	text-align: center;
+}
+.desc_form input{
+	padding: 5px;
+	margin-bottom: 10px;
+	outline: none;
+	width: 200px;
+	border: 2px solid lightgray;
+	color: gray;
+	border-radius: 5px;
+}
