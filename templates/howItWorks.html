@@ -4,27 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>How It Works</title>
-	<link href="howItWorks.css" rel="stylesheet" type="text/css" />
-	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="/static/css/howItWorks.css" rel="stylesheet" type="text/css" />
+	<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="header">
-		<a href="./index.html">
+		<a href="/index.html">
 			<div class="logo">
-				<img src="./logo.png">
+				<img src="{{url_for('static', filename='./logo.png')}}">
 			</div>
 		</a>
 		<div class="tabs">
-			<a href="./index.html">
+			<a href="/index">
 				<p>Home</p>
 			</a>
-			<a href="./howItWorks.html">
+			<a href="/how_it_works">
 				<p>How It Works</p>
 			</a>
-            <a href="./login.html">
+            <a href="/login">
             	<p>LogIn</p>
             </a>
-            <a href="./signup.html">
+            <a href="/signup">
             	<p>SignUp</p>
             </a>
 		</div>
