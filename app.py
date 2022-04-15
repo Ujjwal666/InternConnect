@@ -29,41 +29,6 @@ def index():
     return(render_template('index.html'))
 
 
-#SIGNUP Route
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == "POST":
-        users = mongo.db.user_profile
-        #search for email in database
-        existing_user = users.find_one({'email': request.form['email']})
-
-        #if user not in database
-        if not existing_user:
-            name = request.form['name']
-            email = request.form['email']
-            #encode password
-            password = (request.form['password']).encode("utf-8")
-            zip_code = request.form['zip_code']
-
-            #hash password
-            salt = bcrypt.gensalt()
-            hashed = bcrypt.hashpw(password, salt)
-
-            # add new user to database
-
-            users.insert_one({'name': name, 'email': email, 'password': hashed, 'zip_code': zip_code})
-
-            #store email in session
-            session['email'] = request.form['email']
-            return redirect(url_for('index'))
-
-        else:
-            return 'Useremail already registered.  Try logging in.'
-    
-    else:
-        return render_template('signup.html')
-    
-
 @app.route('/nearby')
 def nearby():
     users = mongo.db.user_profile
@@ -74,18 +39,18 @@ def nearby():
     user = users.find_one({'email': email})
     zip_code = user['zip_code']
     distance = request.form['distance']
-
  
     api_url = f"https://www.zipcodeapi.com/rest/wGb42N8fhmmLTspUBSjLwaxNaZrL6YL59kCJ2Yu38P75IDJ5F8NlNhlzywJQlreg/radius.json/{zip_code}/{distance}/mile"
     response = requests.get(api_url)
 
     for item in response.json()['zip_codes']:
-        print(item)
+        if item['zip_code'] != str(zip_code):
+            print(f"{item['zip_code']} is {item['distance']} miles away from {zip_code}")
     return(render_template('nearby.html', zip_code=zip_code, distance=distance))
 
-# @app.route('/how_it_works')
-# def how_it_works():
-#     return (render_template('howItWorks.html'))
+@app.route('/how_it_works')
+def how_it_works():
+    return (render_template('howItWorks.html'))
 
 # @app.route('/login')
 # def login():
