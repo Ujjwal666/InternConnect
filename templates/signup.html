@@ -4,27 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SignUp</title>
-	<link href="signup.css" rel="stylesheet" type="text/css" />
-	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/signup.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="header">
-		<a href="./index.html">
+		<a href="/index">
 			<div class="logo">
 				<img src="./logo.png">
 			</div>
 		</a>
 		<div class="tabs">
-			<a href="./index.html">
+			<a href="/index">
 				<p>Home</p>
 			</a>
-			<a href="./howItWorks.html">
+			<a href="/howItWorks">
 				<p>How It Works</p>
 			</a>
-            <a href="./login.html">
+            <a href="/login">
             	<p>LogIn</p>
             </a>
-            <a href="./signup.html">
+            <a href="/signup">
             	<p>SignUp</p>
             </a>
 		</div>
@@ -36,16 +36,19 @@
 		</div>
 		<div class="desc_form">
 			<h2>SignUp</h2>
-			<input type="text" name="name" placeholder="Full Name" />
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="password" placeholder="Password" />
-			<div class="address">
-				<input type="text" name="" placeholder="Street Address">
-				<input type="text" name="zip_code" placeholder="Zip Code">
-			</div>
-			<input type="text" name="" placeholder="Company you are interning for">
-			<input type="text" name="" placeholder="Hobbies/Interests">
-			<input type="submit" name="" value="Submit">
+            <form method="post" action="/signup">
+                <input type="text" name="name" value="" placeholder="Full Name" />
+                <input type="email" name="email" value="" placeholder="Email" />
+                <input type="password" name="password" value="" placeholder="Password" />
+                <div class="address">
+                    <input type="text" name="address" value="" placeholder="Street Address" />
+                    <input type="text" name="zip_code" value="" placeholder="Zip Code" />
+                </div>
+                <input type="text" name="company" value="" placeholder="Company you are interning for" />
+                <input type="text" name="interests" value="" placeholder="Hobbies/Interests" />
+                <input type="submit" value="Submit" />
+            </form>
+			
 		</div>
 	</div>
 </body>
