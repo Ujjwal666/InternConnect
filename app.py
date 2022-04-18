@@ -130,6 +130,10 @@ def map():
 def how_it_works():
     return render_template('howItWorks.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
