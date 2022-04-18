@@ -2,6 +2,7 @@ import os
 import requests
 import bcrypt
 import secrets
+import folium
 from flask import Flask
 from flask import render_template
 from flask import request, redirect, session, url_for
@@ -52,9 +53,9 @@ def nearby():
 def how_it_works():
     return (render_template('howItWorks.html'))
 
-# @app.route('/login')
-# def login():
-#     return (render_template('login.html'))
+@app.route('/login')
+def login():
+    return (render_template('login.html'))
 
 # @app.route('/signup')
 # def signup():
