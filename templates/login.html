@@ -4,27 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LogIn</title>
-	<link href="signup.css" rel="stylesheet" type="text/css" />
-	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/signup.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="header">
-		<a href="./index.html">
+		<a href="/index">
 			<div class="logo">
 				<img src="./logo.png">
 			</div>
 		</a>
 		<div class="tabs">
-			<a href="./index.html">
+			<a href="/index">
 				<p>Home</p>
 			</a>
-			<a href="./howItWorks.html">
+			<a href="/howItWorks">
 				<p>How It Works</p>
 			</a>
-            <a href="./login.html">
+            <a href="/login">
             	<p>LogIn</p>
             </a>
-            <a href="./signup.html">
+            <a href="/signup">
             	<p>SignUp</p>
             </a>
 		</div>
@@ -36,9 +36,14 @@
 		</div>
 		<div class="desc_form">
 			<h2>LogIn</h2>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" /> 
-			<input type="submit" name="" value="Submit">
+            <form method="post" action="/login">
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" /> 
+                <input type="submit" name="" value="Submit">
+            </form>
+			{% if error %}
+                <p style="color:red;">{{error}}</p>
+            {% endif %}
 		</div>
 	</div>
 </body>

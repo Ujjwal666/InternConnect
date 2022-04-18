@@ -54,6 +54,12 @@ a{
   margin: auto;
   height: 40px;
 }
+.input_header button{
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
 .input_header input{
   height: 40px;
   width: 100%;

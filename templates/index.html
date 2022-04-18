@@ -4,37 +4,64 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Connect Interns</title>
-	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="header">
 		<a href="/index">
 			<div class="logo">
-				<img src="./logo.png">
+				<img src="../logo.png">
 			</div>
 		</a>
 		<div class="tabs">
+<<<<<<< HEAD
 			<a href="./index">
+=======
+			<a href="/index">
+>>>>>>> 4f414d55f1611bb5e65671d952b7dff53e1e7a49
 				<p>Home</p>
 			</a>
 			<a href="/howItWorks">
 				<p>How It Works</p>
 			</a>
+<<<<<<< HEAD
             <a href="/login">
             	<p>LogIn</p>
             </a>
             <a href="/signup">
             	<p>SignUp</p>
+=======
+            {% if session %}
+            <a href='/logout'>
+                <p>
+                    Log Out
+                </p>
             </a>
+
+        {% else %}
+            <a href="/login">
+                <p>LogIn</p>
+            </a>
+
+            <a href="/signup">
+                <p>SignUp</p>
+>>>>>>> 4f414d55f1611bb5e65671d952b7dff53e1e7a49
+            </a>
+        {% endif %}
 		</div>
 	</div>
 
 	<div class="description">
 		<h1>Connect with interns/students with similar preferences nearby</h1>
 		<div class="input_header">
-            <input type="text" placeholder="Search for your destinations..."/>
-            <a href="./nearby.html">
-
+            <!-- <form method="post" action="/nearby">
+                <input name="zipcode" type="text" placeholder="Search for your destinations..."/>
+                <a href="/nearby">
+                    <img src="{{url_for('static', filename='./search.gif')}}" />
+                </a>
+            </form> -->
+            <a href="/nearby">
+                <button>Find Nearby</button>
             </a>
         </div> 
 	</div>
