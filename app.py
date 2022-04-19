@@ -18,13 +18,13 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'database'
 
 secret_key = os.environ.get('MONGO_URI')
-app.config['MONGO_URI'] = "mongodb+srv://admin:WSeGRxmWVLbiFBpR@cluster0.oa59d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://admin:dStKsL8tINe3LD54@cluster0.6ah66.mongodb.net/InternConnect?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app)
 
 app.secret_key = secrets.token_urlsafe(16)
-# mongo.db.create_collection("user_profile")
+#mongo.db.create_collection("user_profile")
 
 # -- Routes section --
 # INDEX Route
@@ -130,9 +130,21 @@ def map():
 def how_it_works():
     return render_template('howItWorks.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
+    users = mongo.db.users
+    if session:
+        email = session['email']
+        user = users.find_one({"email":email})
+        name = user['name']
+        address = user['address']
+        zip_code = user['zip_code']
+        company = user['company']
+        interests = user['interests']
+    else:
+        email = None
+    
+    return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

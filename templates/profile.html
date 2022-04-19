@@ -50,28 +50,20 @@
 	</div>
     <div class="login">
 		<div class="desc_form">
-			<h2>SignUp</h2>
-            <form method="post" action="/signup">
+			<h2>Profile</h2>
+            <form method="post" action="/profile">
                 <h3>Name</h3>
-                <input type="text" name="name" value="" placeholder="Full Name" />
+                    {{ name }}
                 <h3>Email</h3>
-                <input type="email" name="email" value="" placeholder="Email" />
+                    {{ email }}
                 <h3>Address</h3>
-                <div class="address">
-                    <input type="text" name="address" value="" placeholder="Street Address" />
-                    <input type="text" name="zip_code" value="" placeholder="Zip Code" />
-                </div>
+                    {{ address }}
+                    
                 <h3>Company</h3>
-                <input type="text" name="company" value="" placeholder="Company you are interning for" />
+                    {{ company }}
                 <h3>Hobbies/Interests</h3>
-                <input type="text" name="interests" value="" placeholder="Hobbies/Interests" />
-                <h3>Preferences</h3>
-                <input type="text" name="preferences" value="" placeholder="Preferences" />
-                    <div class="preferences">
-                        <h3>Roommates</h3>
-                        <input type="text" name="roommates" value="" placeholder="How many roomates do you want?" />
+                    {{ interests }}
 
-                    </div>
                 <input type="submit" value="Submit" />
             </form>
 			
