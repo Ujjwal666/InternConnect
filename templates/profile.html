@@ -53,16 +53,17 @@
 			<h2>Profile</h2>
             <form method="post" action="/profile">
                 <h3>Name</h3>
-                    {{ name }}
+                    <input type="text" name="name" value={{name}} placeholder="Full Name" />
                 <h3>Email</h3>
-                    {{ email }}
+                    <input type="email" name="email" value={{email}} placeholder="Email" />
                 <h3>Address</h3>
-                    {{ address }}
-                    
+                    <input type="text" name="address" value={{address}} placeholder="Street Address" />
+                <h3>Zip Code</h3>
+                    <input type="text" name="zip_code" value={{zip_code}} placeholder="Zip Code" />
                 <h3>Company</h3>
-                    {{ company }}
+                    <input type="text" name="company" value={{company}} placeholder="Company you are interning for" />
                 <h3>Hobbies/Interests</h3>
-                    {{ interests }}
+                    <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
 
                 <input type="submit" value="Submit" />
             </form>

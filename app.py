@@ -131,7 +131,7 @@ def how_it_works():
     return render_template('howItWorks.html')
 
 @app.route('/profile', methods=['GET', 'POST'])
-def profile():
+def profile(): # allow user to add a picture, view and update data, and input their roommate preference
     users = mongo.db.users
     if session:
         email = session['email']
