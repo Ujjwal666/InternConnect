@@ -52,8 +52,8 @@
 		<div class="desc_form">
 			<h2>Profile</h2>
             <form method="post" action="/profile">
-                <h3>Name</h3>
-                    <input type="text" name="name" value={{name}} placeholder="Full Name" />
+                <h3> {{name}} </h3>
+                <input type="file" name="pic" />
                 <h3>Email</h3>
                     <input type="email" name="email" value={{email}} placeholder="Email" />
                 <h3>Address</h3>
@@ -64,6 +64,8 @@
                     <input type="text" name="company" value={{company}} placeholder="Company you are interning for" />
                 <h3>Hobbies/Interests</h3>
                     <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
+                <h3>Roomates</h3>
+                    <input type="text" name="roommates" value="" placeholder="How many roommates would you like?" />
 
                 <input type="submit" value="Submit" />
             </form>
