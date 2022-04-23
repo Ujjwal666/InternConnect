@@ -9,7 +9,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 }
-
+.description{
+    position: absolute;
+    top: 50px;
+}
+#particles-js{
+    margin-top: 50px;
+}
 .header{
   display: flex;
   align-items: center;
@@ -73,4 +79,17 @@ a{
 }
 .input_header img{
   height: 40px;
+}
+.desc_form{
+    margin: 0 auto;
+    width: 50%;
+}
+.desc_form img{
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #00203f;
+}
+.profile{
+    display: flex;
+    justify-content: space-between;
 }

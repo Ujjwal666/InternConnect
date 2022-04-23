@@ -10,6 +10,55 @@ body{
     width: 100%;
     height: 500px;
 }
+.notation{
+    position: absolute;
+    z-index: 100;
+    background: white;
+    top: 120px;
+    right: 0;
+}
+
+.circle_red p{
+    background-color: red;
+    height: 10px;
+    width: 10px;
+    color: red;
+    font-size: 10px;
+    margin: 5px;
+}
+
+.circle_yellow p{
+    background-color: yellow;
+    height: 10px;
+    width: 10px;
+    color: yellow;
+    font-size: 10px;
+    margin: 5px;
+}
+
+.circle_green p{
+    color: green;
+    background-color: green;
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+    margin: 5px;
+}
+
+.circle_blue p{
+    background-color: skyblue;
+    height: 10px;
+    width: 10px;
+    color: skyblue;
+    font-size: 10px;
+    margin: 5px;
+}
+.meaning{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    margin-bottom: -10px;
+}
 .individual{
 	display: flex;
 	margin: auto;

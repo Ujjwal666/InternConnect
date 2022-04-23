@@ -10,7 +10,7 @@
 	<div class="header">
 		<a href="/index">
 			<div class="logo">
-				<img src="../logo.png">
+				<img src="{{url_for('static', filename='logo.png')}}">
 			</div>
 		</a>
 		<div class="tabs">
@@ -43,7 +43,7 @@
         {% endif %}
 		</div>
 	</div>
-
+    <div id="particles-js"></div>
 	<div class="description">
 		<h1>Connect with interns/students with similar preferences nearby</h1>
 		<div class="input_header">
@@ -53,10 +53,18 @@
                     <img src="{{url_for('static', filename='./search.gif')}}" />
                 </a>
             </form> -->
-            <a href="/nearby">
-                <button>Find Nearby</button>
-            </a>
+            {% if session %}
+                <a href="/nearby">
+                    <button>Find Nearby</button>
+                </a>
+            {% else %}
+                <a href="/signup">
+                    <button>Find Nearby</button>
+                </a>
+            {% endif %}
         </div> 
 	</div>
+    <script type="text/javascript" src="static/particles.js"></script>
+    <script type="text/javascript" src="static/app.js"></script>
 </body>
 </html>

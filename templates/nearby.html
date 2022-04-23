@@ -42,6 +42,40 @@
 				<iframe id="iframeid" src="/map"></iframe>  
 			</div>
 		</div>
+        {% if is_nearby %}
+            <div class="notation">
+                <div class="meaning">
+                    <div class="circle_red">
+                        <p>A</p>
+                    </div>
+                    <p>Company,interest matches</p>
+                </div>
+                <div class="meaning">
+                    <div class="circle_yellow">
+                        <p>A</p>                    
+                    </div>
+                    <p>Interest matches</p>
+                </div>
+                <div class="meaning">
+                    <div class="circle_green">
+                        <p>A</p>
+                    </div>
+                    <p>Company matches</p>
+                </div>
+                <div class="meaning">
+                    <div class="circle_blue">
+                        <p>A</p>
+                    </div>
+                    <p>Nearby people</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="notation">
+                <div class="meaning">
+                    <p>No one is nearby your location.</p>
+                </div>
+            </div>
+        {% endif %}
 
 		<div class="featured">
 			<h2>Available Housings Nearby</h2>

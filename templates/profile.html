@@ -27,7 +27,7 @@
                 </p>
             </a>
             <a href='/profile'>
-                <img src="360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" style="width:42px;height:42px;">
+                <img src={{pic}} style="width:42px;height:42px;">
 
             </a>
 
@@ -46,12 +46,14 @@
 		<div class="desc_form">
 			<h2>Profile</h2>
             <form method="post" action="/profile">
-            
                 <img src={{pic}}>
                 <h3> {{name}} </h3>
-                <label for="url">Image Address URL:</label>
-                <input type="text" name="url" value="">
-            
+                {% if not pic %}
+                    <label for="url">Image Address URL:</label>
+                    <input type="text" name="url" value="">
+                {% endif %}
+                
+        
                 <h3>Email</h3>
                     <input type="email" name="email" value={{email}} placeholder="Email" />
                 <h3>Address</h3>

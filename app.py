@@ -17,8 +17,7 @@ app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'database'
 
-secret_key = os.environ.get('MONGO_URI')
-app.config['MONGO_URI'] = "mongodb+srv://admin:dStKsL8tINe3LD54@cluster0.6ah66.mongodb.net/InternConnect?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 #Initialize PyMongo
 mongo = PyMongo(app)
@@ -32,7 +31,6 @@ app.secret_key = secrets.token_urlsafe(16)
 @app.route('/index')
 def index():
     if (os.path.exists("./templates/map.html")):
-        print("DONEEEEEEEE")
         os.remove("./templates/map.html")
     return (render_template('index.html'))
 
@@ -70,6 +68,7 @@ def nearby():
     # print(list(db_user))
     split_session = session['interests'].split(',')
     # print(split_session)
+    is_nearby = False    
     for z in zcdb.get_zipcodes_around_radius(zip_code, 5):
         # print(z.zip)
         for user in db_user:
@@ -80,6 +79,7 @@ def nearby():
                     if interest in user['interests']:
                         # print("interest user",user_split)
                         if session['company'] == user['company']:
+                            is_nearby = True
                             #if zipcode,company,interest matches -- red color
                             a = nom.geocode(z.zip)
                             folium.Marker(
@@ -91,6 +91,7 @@ def nearby():
                         else:
                             #if zipcode,interest matches -- yellow color
                             # print(user['name'],user['company'],session['company'])
+                            is_nearby = True
                             a = nom.geocode(z.zip)
                             folium.Marker(
                                 location=[a[1][0], a[1][1]],
@@ -99,6 +100,7 @@ def nearby():
                                 icon=folium.Icon(color="yellow", icon="info-sign"),
                             ).add_to(map)
                     elif session['company'] == user['company']:
+                        is_nearby = True
                         #if zipcode,company matches -- green color
                         # print(user['name'],user['company'],session['company'])                            
                         a = nom.geocode(z.zip)
@@ -110,6 +112,7 @@ def nearby():
                         ).add_to(map)
     
                     else:
+                        is_nearby = True
                         # print("found", z.zip)
                         a = nom.geocode(z.zip)
                         folium.Marker(
@@ -120,7 +123,7 @@ def nearby():
 
     map.save('templates/map.html')
     
-    return(render_template('nearby.html', zip_code=zip_code, distance=distance))
+    return(render_template('nearby.html', zip_code=zip_code, distance=distance, is_nearby=is_nearby))
 
 @app.route('/map')
 def map():
@@ -132,7 +135,6 @@ def how_it_works():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile(): # allow user to add a picture, view and update data, and input their roommate preference
-    # if request.method == "POST":
     users = mongo.db.users
     if session:
         email = session['email']
@@ -142,12 +144,15 @@ def profile(): # allow user to add a picture, view and update data, and input th
         zip_code = user['zip_code']
         company = user['company']
         interests = user['interests']
-        pic = user['pic']
     else:
         email = None
-
-    return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests, pic = pic)
-
+    if request.method == "POST":
+        url = request.form['url']
+        roomates = request.form['roomates']
+        
+        print("piccccc",url)
+        return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests, pic = url)
+    return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests)
 @app.route('/profile_picture')
 def profile_picture():
     users = mongo.db.users
@@ -161,12 +166,12 @@ def profile_picture():
         else:
             email = None
     else:
-        url = request.form
+        url = request.form['url']
         user = users.find_one({"email":email})
         pic = { "$set": {"img": url } }
 
         users.update_one(user, pic)
-        return redirect('/profile')
+        
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
