@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Profile</title>
+	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="header">
+		<a href="/index">
+			<div class="logo">
+				<img src="../logo.png">
+			</div>
+		</a>
+		<div class="tabs">
+			<a href="/index">
+				<p>Home</p>
+			</a>
+			<a href="/howItWorks">
+				<p>How It Works</p>
+			</a>
+            {% if session %}
+            <a href='/logout'>
+                <p>
+                    Log Out
+                </p>
+            </a>
+            <a href='/profile'>
+                <img src="360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" style="width:42px;height:42px;">
+
+            </a>
+
+        {% else %}
+            <a href="/login">
+                <p>LogIn</p>
+            </a>
+
+            <a href="/signup">
+                <p>SignUp</p>
+            </a>
+        {% endif %}
+		</div>
+	</div>
+    <div class="login">
+		<div class="desc_form">
+			<h2>Profile</h2>
+            <form method="post" action="/profile">
+            
+                <img src={{pic}}>
+                <h3> {{name}} </h3>
+                <label for="url">Image Address URL:</label>
+                <input type="text" name="url" value="">
+            
+                <h3>Email</h3>
+                    <input type="email" name="email" value={{email}} placeholder="Email" />
+                <h3>Address</h3>
+                    <input type="text" name="address" value={{address}} placeholder="Street Address" />
+                <h3>Zip Code</h3>
+                    <input type="text" name="zip_code" value={{zip_code}} placeholder="Zip Code" />
+                <h3>Company</h3>
+                    <input type="text" name="company" value={{company}} placeholder="Company you are interning for" />
+                <h3>Hobbies/Interests</h3>
+                    <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
+
+                <h3>Roomates:</h3>
+                    <select id="roomates"  name="roomates">
+                      {% for i in range(10)%}
+                        <option value="">{{ i }}</option>
+                      {% endfor %}
+                    </select>
+
+                <input type="submit" value="Submit" />
+            </form>
+			
+		</div>
+	</div>
+
+</body>
+</html>
