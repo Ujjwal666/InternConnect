@@ -11,7 +11,7 @@
 	<div class="header">
 		<a href="/index">
 			<div class="logo">
-				<img src="./logo.png">
+				<img src="{{url_for('static', filename='logo.png')}}">
 			</div>
 		</a>
 		<div class="tabs">
@@ -21,17 +21,27 @@
 			<a href="/howItWorks">
 				<p>How It Works</p>
 			</a>
-            <a href="/login">
-            	<p>LogIn</p>
-            </a>
-            <a href="/signup">
-            	<p>SignUp</p>
+            {% if session %}
+            <a href='/logout'>
+                <p>
+                    Log Out
+                </p>
             </a>
             <a href='/profile'>
                 <p>
                     Profile
                 </p>
             </a>
+
+        {% else %}
+            <a href="/login">
+                <p>LogIn</p>
+            </a>
+
+            <a href="/signup">
+                <p>SignUp</p>
+            </a>
+        {% endif %}
 		</div>
 	</div>
 

@@ -10,7 +10,7 @@
 	<div class="header">
 		<a href="/index">
 			<div class="logo">
-				<img src="../logo.png">
+				<img src="{{url_for('static', filename='logo.png')}}">
 			</div>
 		</a>
 		<div class="tabs">
@@ -27,8 +27,9 @@
                 </p>
             </a>
             <a href='/profile'>
-                <img src={{pic}} style="width:42px;height:42px;">
-
+                <p>
+                    Profile
+                </p>
             </a>
 
         {% else %}
@@ -42,6 +43,7 @@
         {% endif %}
 		</div>
 	</div>
+    
     <div class="login">
 		<div class="desc_form">
 			<h2>Profile</h2>
