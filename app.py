@@ -132,7 +132,6 @@ def how_it_works():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile(): # allow user to add a picture, view and update data, and input their roommate preference
-    # if request.method == "POST":
     users = mongo.db.users
     if session:
         email = session['email']
@@ -142,31 +141,10 @@ def profile(): # allow user to add a picture, view and update data, and input th
         zip_code = user['zip_code']
         company = user['company']
         interests = user['interests']
-        pic = user['pic']
     else:
         email = None
 
-    return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests, pic = pic)
-
-@app.route('/profile_picture')
-def profile_picture():
-    users = mongo.db.users
-    if request.method == "GET":
-        
-        if session:
-            email = session['email']
-            user = users.find_one({"email":email})
-
-            return render_template('profile_pciture.html', user = user)
-        else:
-            email = None
-    else:
-        url = request.form
-        user = users.find_one({"email":email})
-        pic = { "$set": {"img": url } }
-
-        users.update_one(user, pic)
-        return redirect('/profile')
+    return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -210,8 +188,6 @@ def signup():
             company = request.form['company']
             interests = request.form['interests']
 
-            pic = "360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
-
             #encode password
             password = (request.form['password']).encode("utf-8")
 
@@ -221,7 +197,7 @@ def signup():
 
             # add new user to database
 
-            users.insert_one({'email': email, 'password': hashed, 'name':name, 'address':address, 'zip_code':zip_code, 'company': company, 'interests':interests, 'pic': pic})
+            users.insert_one({'email': email, 'password': hashed, 'name':name, 'address':address, 'zip_code':zip_code, 'company': company, 'interests':interests})
 
             #store email in session
             session['email'] = request.form['email']
