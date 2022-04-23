@@ -27,9 +27,8 @@
                 </p>
             </a>
             <a href='/profile'>
-                <p>
-                    Profile
-                </p>
+                <img src="360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" style="width:42px;height:42px;">
+
             </a>
 
         {% else %}
@@ -40,11 +39,6 @@
             <a href="/signup">
                 <p>SignUp</p>
             </a>
-            <a href='/profile'>
-                <p>
-                    Profile
-                </p>
-            </a>
         {% endif %}
 		</div>
 	</div>
@@ -52,8 +46,12 @@
 		<div class="desc_form">
 			<h2>Profile</h2>
             <form method="post" action="/profile">
+            
+                <img src={{pic}}>
                 <h3> {{name}} </h3>
-                <input type="file" name="pic" />
+                <label for="url">Image Address URL:</label>
+                <input type="text" name="url" value="">
+            
                 <h3>Email</h3>
                     <input type="email" name="email" value={{email}} placeholder="Email" />
                 <h3>Address</h3>
@@ -64,8 +62,13 @@
                     <input type="text" name="company" value={{company}} placeholder="Company you are interning for" />
                 <h3>Hobbies/Interests</h3>
                     <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
-                <h3>Roomates</h3>
-                    <input type="text" name="roommates" value="" placeholder="How many roommates would you like?" />
+
+                <h3>Roomates:</h3>
+                    <select id="roomates"  name="roomates">
+                      {% for i in range(10)%}
+                        <option value="">{{ i }}</option>
+                      {% endfor %}
+                    </select>
 
                 <input type="submit" value="Submit" />
             </form>
