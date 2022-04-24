@@ -16,6 +16,7 @@ import requests
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'database'
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
