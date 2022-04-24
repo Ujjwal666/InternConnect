@@ -7,6 +7,15 @@
 	<link href="./static/css/nearby.css" rel="stylesheet" type="text/css" />
 	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var myIframe=document.getElementById('iframeid').reload(true);
+    myIframe.src=myIframe.src;
+    
+    // $(document).ready(function(){
+    //     $('#map').load("map")
+    // });
+</script>
 <body>
 	<div class="header">
 		<a href="/index">
@@ -48,9 +57,10 @@
 	<div class="nearby">      
 		<div class="nearby_people">
 			<h2>Peoples Nearby</h2>
-			<div class="peoples">
-				<iframe id="iframeid" src="/map"></iframe>  
-			</div>
+            <div class="peoples">
+                <iframe id="iframeid" src="/map"></iframe>  
+            </div>
+            <!-- <div id="map"></div> -->
 		</div>
         {% if is_nearby %}
             <div class="notation">
@@ -166,8 +176,5 @@
 
 		</div>
 	</div>
-    <script>
-        document.getElementById('iframeid').src = document.getElementById('iframeid').src
-    </script>
 </body>
 </html>

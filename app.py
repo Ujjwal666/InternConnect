@@ -72,6 +72,7 @@ def nearby():
     for z in zcdb.get_zipcodes_around_radius(zip_code, 5):
         # print(z.zip)
         for user in db_user:
+            # print(user)
             user_info = f"Name: {user['name']}\nEmail: {user['email']}\nAddress: {user['address']}\nCompany: {user['company']}\n+Hobbies/Interests: {user['interests']}"
             if z.zip == user['zip_code'] and z.zip != session['zip_code']:
                 for interest in split_session:
@@ -89,7 +90,7 @@ def nearby():
                                 icon=folium.Icon(color="red", icon="info-sign"),
                             ).add_to(map)
                         else:
-                            #if zipcode,interest matches -- yellow color
+                            #if zipcode,interest matches -- black color
                             # print(user['name'],user['company'],session['company'])
                             is_nearby = True
                             a = nom.geocode(z.zip)
@@ -97,7 +98,7 @@ def nearby():
                                 location=[a[1][0], a[1][1]],
                                 popup=user_info,
                                 tooltip=user['name'],
-                                icon=folium.Icon(color="yellow", icon="info-sign"),
+                                icon=folium.Icon(color="black", icon="info-sign"),
                             ).add_to(map)
                     elif session['company'] == user['company']:
                         is_nearby = True
@@ -120,7 +121,6 @@ def nearby():
                             popup=user_info,
                             tooltip=user['name'],
                         ).add_to(map)
-
     map.save('templates/map.html')
     
     return(render_template('nearby.html', zip_code=zip_code, distance=distance, is_nearby=is_nearby))
