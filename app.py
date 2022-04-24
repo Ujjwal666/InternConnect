@@ -147,11 +147,20 @@ def profile(): # allow user to add a picture, view and update data, and input th
     else:
         email = None
     if request.method == "POST":
+
+        interests = user['interests']
+        users.update_one({"email":email}, { "$set": {"interests": interests } })
+
         url = request.form['url']
+        pic = { "$set": {"pic": url } }
+        users.update_one({"email":email}, pic)
+
         roomates = request.form['roomates']
+        rm = { "$set": {"roomates": str(roomates) } }
+        users.update_one({"email":email}, rm)
         
         print("piccccc",url)
-        return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests, pic = url)
+        return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests, pic = url, roomates=roomates)
     return render_template('profile.html', name = name, email = email, address = address, zip_code = zip_code, company = company, interests = interests)
 @app.route('/profile_picture')
 def profile_picture():
@@ -240,3 +249,10 @@ def signup():
     
     else:
         return render_template('signup.html')
+
+
+@app.route('/logout')
+def logout():
+    #clear email from session data
+    session.clear()
+    return redirect(url_for('index'))

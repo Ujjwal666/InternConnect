@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Profile</title>
-	<link href="./static/css/index.css" rel="stylesheet" type="text/css" />
+	<link href="./static/css/profile.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="header">
@@ -46,25 +46,26 @@
     
     <div class="login">
 		<div class="desc_form">
-			<h2>Profile</h2>
+			<h2>{{ name }}'s Profile</h2>
             <form method="post" action="/profile">
+                <div>
                 <img src={{pic}}>
-                <h3> {{name}} </h3>
+            </div>
                 {% if not pic %}
                     <label for="url">Image Address URL:</label>
                     <input type="text" name="url" value="">
                 {% endif %}
                 
         
-                <h3>Email</h3>
+                <label>Email</label>
                     <input type="email" name="email" value={{email}} placeholder="Email" />
-                <h3>Address</h3>
+                <label>Address</label>
                     <input type="text" name="address" value={{address}} placeholder="Street Address" />
-                <h3>Zip Code</h3>
-                    <input type="text" name="zip_code" value={{zip_code}} placeholder="Zip Code" />
-                <h3>Company</h3>
+                    <label>Zip Code</label>
+                        <input type="text" name="zip_code" value={{zip_code}} placeholder="Zip Code" />
+                <label>Company</label>
                     <input type="text" name="company" value={{company}} placeholder="Company you are interning for" />
-                <h3>Hobbies/Interests</h3>
+                <label>Hobbies/Interests</label>
                     <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
 
                 <h3>Roomates:</h3>
@@ -73,7 +74,6 @@
                         <option value="">{{ i }}</option>
                       {% endfor %}
                     </select>
-
                 <input type="submit" value="Submit" />
             </form>
 			
