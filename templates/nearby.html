@@ -48,9 +48,10 @@
 	<div class="nearby">      
 		<div class="nearby_people">
 			<h2>Peoples Nearby</h2>
-			<div class="peoples">
-				<iframe id="iframeid" src="/map"></iframe>  
-			</div>
+            <div class="peoples">
+                <iframe src="/map" id="iframeid"></iframe>  
+            </div>
+            <!-- <div id="map"></div> -->
 		</div>
         {% if is_nearby %}
             <div class="notation">
@@ -166,8 +167,5 @@
 
 		</div>
 	</div>
-    <script>
-        document.getElementById('iframeid').src = document.getElementById('iframeid').src
-    </script>
 </body>
 </html>
