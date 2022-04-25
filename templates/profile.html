@@ -56,7 +56,6 @@
                     <input type="text" name="url" value="">
                 {% endif %}
                 
-        
                 <label>Email</label>
                     <input type="email" name="email" value={{email}} placeholder="Email" />
                 <label>Address</label>
@@ -68,12 +67,6 @@
                 <label>Hobbies/Interests</label>
                     <input type="text" name="interests" value={{interests}} placeholder="Hobbies/Interests" />
 
-                <h3>Roomates:</h3>
-                    <select id="roomates"  name="roomates">
-                      {% for i in range(10)%}
-                        <option value="">{{ i }}</option>
-                      {% endfor %}
-                    </select>
                 <input type="submit" value="Submit" />
             </form>
 			
